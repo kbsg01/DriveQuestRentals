@@ -6,8 +6,11 @@ on:
       - main
 
 jobs:
-  get_data:
-    runs-on: ubuntu-latest
+  upload:
+    strategy:
+      matrix:
+        runs-on: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.runs-on }}
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -20,10 +23,8 @@ jobs:
           artifact_name: 'DriveQuest Rentals'
           excluded_paths: ".idea,.mvn,.github"
 
-      - name: Get artifact
-        uses: actions/download-artifact@v2
+      - name: Upload diagram artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: "my-diagram"
-          path: "downloads"
-
-          
+          name: diagram
+          path: diagram.svg
