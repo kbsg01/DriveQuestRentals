@@ -20,7 +20,7 @@ jobs:
         with:
           root_path: src/main/java/org/duoc
           output_file: diagram.svg
-          artifact_name: 'DriveQuest Rentals'
+          artifact_name: "DriveQuest Rentals"
           excluded_paths: ".idea,.mvn,.github"
           should_push: false
 
