@@ -21,10 +21,10 @@ public class VehiculoService {
 
     /**
      * Devuelve el mapa sincronizado de vehículos registrados.
-     * @return HashMap con la patente como clave y el vehículo como valor.
+     * @return Map con la patente como clave y el vehículo como valor.
      */
-    public HashMap<String, Vehiculo> getVehiculosMap() {
-        return (HashMap<String, Vehiculo>) vehiculos;
+    public Map<String, Vehiculo> getVehiculosMap() {
+        return vehiculos;
     }
 
     /**
@@ -147,7 +147,7 @@ public class VehiculoService {
     public void mostrarBoletasEmitidas() {
         synchronized( vehiculos){
             for (Vehiculo v : vehiculos.values()) {
-                if (v instanceof IBoleta) {
+                if (v instanceof IBoleta && v.getDiasArriendo() > 0) {
                     ((IBoleta) v).mostrarBoleta();
                 }
             }

@@ -104,11 +104,20 @@ public class MenuController {
         System.out.print("Seleccione tipo: ");
         String tipoList = sc.nextLine().trim();
         if (tipoList.equals("1")) {
-            controller.listarPasajeros().forEach(Vehiculo::mostrarDetalle);
+            System.out.println("Listando vehículos de pasajeros:\n");
+            System.out.printf("| %-10s | %-10s | %-10s | %-4s | %-6s | %-8s | %-7s |\n",
+    "Patente", "Marca", "Modelo", "Año", "Puertas", "Capacidad", "Valor");
+            controller.listarPasajeros().forEach(v -> v.filaDetalle(false));
         } else if (tipoList.equals("2")) {
-            controller.listarCarga().forEach(Vehiculo::mostrarDetalle);
+            System.out.println("Listando vehículos de carga: \n");
+            System.out.printf("| %-10s | %-10s | %-10s | %-4s | %-6s | %-8s | %-7s |\n",
+    "Patente", "Marca", "Modelo", "Año", "Puertas", "Capacidad", "Valor");
+            controller.listarCarga().forEach(v -> v.filaDetalle(false));
         } else if (tipoList.equals("3")) {
-            controller.listarTodos().forEach(Vehiculo::mostrarDetalle);
+            System.out.println("Listando todos los vehículos:\n");
+            System.out.printf("| %-10s | %-10s | %-10s | %-10s | %-4s | %-6s | %-8s | %-7s |\n",
+    "Tipo", "Patente", "Marca", "Modelo", "Año", "Puertas", "Capacidad", "Valor");
+            controller.listarTodos().forEach(v -> v.filaDetalle(true));
         } else {
             System.out.println("Opción de listado no válida.");
         }

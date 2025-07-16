@@ -58,6 +58,18 @@ public class VehiculoPasajeros extends Vehiculo implements IBoleta {
         System.out.println("===================================");
     }
 
+    @Override
+    public void filaDetalle(boolean mostrar) {
+        if(mostrar){
+            System.out.printf("| %-10s | %-10s | %-10s | %-10s | %-4d | %-7d | %-9d | %-7s |\n", 
+                "Pasajeros", getPatente(), getMarca(), getModelo(), getAnio(), getPuertas(), getCapacidadPasajeros(), "$"+getValorDiario());
+        } else {
+            System.out.printf("| %-10s | %-10s | %-10s | %-4s | %-7s | %-9s | %-7s |\n", 
+            getPatente(), getMarca(), getModelo(), getAnio(), getPuertas(), getCapacidadPasajeros(), "$"+getValorDiario());
+        }
+        
+    }
+
     /**
      * Muestra la boleta de arriendo del vehículo de pasajeros.
      * Este método calcula el subtotal, descuento, impuesto y total a pagar,
@@ -90,12 +102,13 @@ public class VehiculoPasajeros extends Vehiculo implements IBoleta {
     public void imprimirBoleta(int arriendo, int subtotal, int descuento, int impuesto, int total){
         System.out.println("===== Boleta Electrónica - DriveQuest Rentals =====");
         System.out.println("Tipo de Vehículo: Vehículo de pasajeros");
+        System.out.println("Patente: " + getPatente());
         System.out.println("Días de Arriendo: " + arriendo);
         System.out.println("===================================================");
         System.out.println("Subtotal: $" + subtotal);
         System.out.println("Descuento: -$"+ descuento);
         System.out.println("IVA (19%): $"+ impuesto);
         System.out.println("Total a Pagar: $" + total);
-        System.out.println("===================================================");
+        System.out.println("\n===================================================\n");
     }
 }

@@ -203,6 +203,9 @@ public class VehiculoController {
             if (datos.patente.isEmpty()) {
                 System.out.println("La patente no puede estar vacía.");
                 return null;
+            } else if (datos.patente.length() < 6 || datos.patente.length() > 8) {
+                System.out.println("La patente debe tener entre 6 y 8 caracteres.");
+                return null;
             }
             System.out.print("Marca: ");
             datos.marca = scanner.nextLine().trim();

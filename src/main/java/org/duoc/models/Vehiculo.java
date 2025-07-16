@@ -28,6 +28,7 @@ public abstract class Vehiculo {
     }
 
     public abstract void mostrarDetalle();
+    public abstract void filaDetalle(boolean mostrarTipo);
 
     public String getPatente() { return patente; }
     public void setPatente(String patente) { this.patente = patente; }
