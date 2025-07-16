@@ -22,15 +22,16 @@ jobs:
           output_file: diagram.svg
           artifact_name: 'DriveQuest Rentals'
           excluded_paths: ".idea,.mvn,.github"
+          should_push: false
 
       - name: Commit and push diagram
         run: |
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git add diagram.svg
-            git commit -m "Update diagram.svg"
-            git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
-            git push
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
+          git add diagram.svg
+          git commit -m "Update diagram.svg" || echo "No changes to commit"
+          git push origin HEAD:${{ github.ref_name }}
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
 
